@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div id="app">
+        <nav class="nav">
+            <div class="title">Method of sort</div>
+            <div>
+                <select class="algo">
+                    <option value="selection">selection Sort</option>
+                    <option value="selection_reverse">Reverse selection Sort</option>
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="bubble_reverse">Bubble Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                </select>
+            </div>
+            <div>
+                <label for="speed">Speed</label>
+                <input id="speed" type="range" step="1" min="1" max="1000" value="100">
+                <span id="speed_value">100</span>
+            </div>
+            <button id="sort">Sort</button>
+            <div class="loading"><div class="loader"></div></div>
+        </nav>
+        <div class="body">
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
