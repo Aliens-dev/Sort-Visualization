@@ -7,7 +7,7 @@ const speed_value = document.getElementById('speed_value')
 const Nblock = document.getElementById('n-block');
 const loading = document.querySelector('.loading')
 
-let list =  Array(20).fill().map(()=> Math.floor(Math.random() * body.clientHeight));
+let list =  Array(parseInt(Nblock.value)).fill().map(()=> Math.floor((Math.random() * (body.clientHeight - 150)) + 150));
 let brickWidth = 0;
 
 // Helpers 
@@ -84,6 +84,42 @@ let bubble_reverse = async function(){
     }
     resetState();
 };
+
+let quick = async function (left,right) {
+    let pivot = list[Math.floor((right + left) / 2)],
+    i = left,
+    j = right;
+    while (i <= j) {
+        while (list[i] < pivot) {
+            i++;
+        }
+        while (list[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            swap(i, j);
+            await sleep(speed.value)
+            i++;
+            j--;
+        }
+    }
+    return i;
+}
+
+async function quickSort(left,right) {
+    let index;
+    if (list.length > 1) {
+        index = await quick(left, right);
+        if (left < index - 1) { 
+            await quickSort(left, index - 1);
+        }
+        if (index < right) {
+            await quickSort(index, right);
+        }
+    }
+    resetState();
+}
+
 // Render Functions 
 const renderBrick = function (width,height,position){
     const brick = document.createElement('div');
@@ -99,8 +135,6 @@ const renderBrick = function (width,height,position){
 }
 
 const renderBody = function() {
-    console.log(list.length);
-    console.log(body.clientWidth)
     brickWidth = Number.parseFloat(body.clientWidth / list.length).toFixed(2)
     for(let i=0;i<list.length;i++) {
         const brick = renderBrick(brickWidth,list[i],i);
@@ -109,6 +143,7 @@ const renderBody = function() {
 }
 
 renderBody()
+
 // Event listeners 
 sortButton.addEventListener('click', function(e) {
     loading.style.display = 'block';
@@ -121,6 +156,8 @@ sortButton.addEventListener('click', function(e) {
         case 'bubble' : bubble();
             break;
         case 'bubble_reverse' : bubble_reverse();
+            break;
+        case 'quick' : quickSort(0, list.length - 1)
             break;
         default: selection();
     }
@@ -137,12 +174,11 @@ speed.addEventListener('change', function(e) {
     for(let i=0; i< blocks.length;i++) {
         blocks[i].style.transition = 'all '+ e.target.value +'ms ease-in-out'
     }
-    console.log(blocks)
 })
 
 Nblock.addEventListener('change', function(e) {
     list = [];
-    list = Array(parseInt(e.target.value)).fill().map(()=> Math.floor(Math.random() * body.clientHeight));
+    list = Array(parseInt(e.target.value)).fill().map(()=> Math.floor(Math.random() * (body.clientHeight - 150)) + 150);
     body.innerHTML = '';
     renderBody();
 });
