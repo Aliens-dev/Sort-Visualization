@@ -15,7 +15,7 @@
                     <option value="selection">selection Sort</option>
                     <option value="selection_reverse">Reverse selection Sort</option>
                     <option value="bubble">Bubble Sort</option>
-                    <option value="bubble_reverse">Bubble Sort</option>
+                    <option value="bubble_reverse">Reverse Bubble Sort</option>
                     <option value="insertion">Insertion Sort</option>
                 </select>
             </div>
@@ -23,6 +23,9 @@
                 <label for="speed">Speed</label>
                 <input id="speed" type="range" step="1" min="1" max="1000" value="100">
                 <span id="speed_value">100</span>
+            </div>
+            <div class="n-blocks">
+                <input id="n-block" type="number" max="1000" min="10" value="20"> 
             </div>
             <button id="sort">Sort</button>
             <div class="loading"><div class="loader"></div></div>

@@ -6,42 +6,53 @@
 #app {
     display:flex;
     flex-direction: column;
-    margin:50px auto;
-    width:1000px;
-    border:1px solid #EEE;
+    margin:0 auto;
+    width:100%;
     border-radius: 5px;
-    padding:10px;
     box-shadow: 0 0 1px 1px #EEE, 0 0 3px 1px #EEE;
 }
 #app .nav {
     display:flex;
     justify-content:flex-start;
     align-items: center;
-    padding:10px 0;
     border-bottom:1px solid #EEE;
-    margin:10px 0;
+    background-color:#15314B;
+    color:#FFF;
+    max-height: 50px;
+    height:50px;
 }
 #app .nav > div {
-    margin: 0 10px;
+    margin: 0 5px;
+    background-color: #001528;
+    padding:10px;
 }
 #app .body {
     display:flex;
-    padding:10px;
+    padding:0 20px;
     justify-content: center;
     position:relative;
-    height:200px;
+    height:calc(100vh - 50px);
     width:100%;
 }
 #app .body .brick {
     border:1px solid #CCC;
+    border-radius: 100px;
 }
 button {
-    padding:10px;
-    border:1px solid #EEE;
-    border-radius:5px;
+    padding:10px 20px;
+    font-size: 17px;
+    border:1px solid #02389C;
+    border-radius:2px;
     margin:0 10px;
+    color:#FFF;
+    background-color: #02389C;
 }
-
+button:hover {
+    cursor: pointer;
+}
+button:focus {
+    outline:none
+}
 .loading{
     display:none;
 }
