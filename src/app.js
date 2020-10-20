@@ -1,6 +1,7 @@
 const body = document.querySelector('.body');
 const sortMethod = document.querySelector('.algo')
 const sortButton = document.getElementById('sort')
+const resetButton = document.getElementById('reset')
 const speed = document.getElementById('speed')
 const speed_value = document.getElementById('speed_value')
 
@@ -30,6 +31,13 @@ const randomColor=  function() {
     const g = Math.floor(Math.random() * 255);
     const b = Math.floor(Math.random() * 255);
     return `rgb(${r},${g},${b})`; 
+}
+
+const resetApp = function(e) {
+    list = [];
+    list = Array(parseInt(Nblock.value)).fill().map(()=> Math.floor(Math.random() * (body.clientHeight - 150)) + 150);
+    body.innerHTML = '';
+    renderBody();
 }
 
 // Sort Algorithms
@@ -176,9 +184,5 @@ speed.addEventListener('change', function(e) {
     }
 })
 
-Nblock.addEventListener('change', function(e) {
-    list = [];
-    list = Array(parseInt(e.target.value)).fill().map(()=> Math.floor(Math.random() * (body.clientHeight - 150)) + 150);
-    body.innerHTML = '';
-    renderBody();
-});
+Nblock.addEventListener('change', resetApp);
+resetButton.addEventListener('click',resetApp);

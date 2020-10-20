@@ -10,6 +10,7 @@
     width:100%;
     border-radius: 5px;
     box-shadow: 0 0 1px 1px #EEE, 0 0 3px 1px #EEE;
+    font-family: sans-serif;
 }
 #app .nav {
     display:flex;
@@ -52,6 +53,9 @@ button:hover {
 }
 button:focus {
     outline:none
+}
+#reset {
+    background-color: firebrick;
 }
 .loading{
     display:none;
